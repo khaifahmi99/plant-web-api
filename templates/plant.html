@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block title %} Plant Info {% endblock %} {% block content %}
+
+<div class="center-align">
+    <br><br> {% if data %}
+    <div class="container">
+        <div class="card-panel teal white-text">
+            <h2>{{data.common_name|title}}</h2>
+            <div class="row">
+                <div class="col s12 l6">
+                    <img class="responsive-img" src={{data.image_url}} alt="pic" />
+                </div>
+                <div class="col s12 l6">
+                    <div class="left-align">
+                        <p>Common Name: {{data.common_name|title}}</p>
+                        <p>Scientific Name: {{data.scientific_name}}</p>
+                        <p>Observation: {{data.observation}}</p>
+                        <p>Bibliography: {{data.bibliography}}</p>
+                        <p>Year Found: {{data.year}}</p>
+                        <p>Vegetable: {{data.vegatble}}</p>
+                        <p>Main Species: {{data.main_species.scientific_name}}</p>
+                        <p>Genus: {{data.genus.name}}</p>
+                        <p>Family: {{data.family.name}}</p>
+                        <br>
+                        <p>References:</p>
+                        <ul>
+                            {% for source in data.sources %}
+                            <li><a class="white-text" href={{source.url}}>{{source.name}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {% endif %}
+</div>
+
+{% endblock %}

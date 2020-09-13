@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% block title %} Plant Search {% endblock %} {% block content %}
+<br><br>
+<div class="container">
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s8 offset-s2">
+                    <input placeholder="gingko biloba" id="keyword" type="text" class="validate">
+                    <label for="keyword">Keyword</label>
+                </div>
+                <div class="col s12 center-align">
+                    <input type="submit" class="btn" value="Search">
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}
