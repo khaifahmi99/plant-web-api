@@ -26,8 +26,16 @@ def plant(id):
     response = json.loads(response)['data']
     return render_template('plant.html', data=response)
 
-@app.route('/search')
+@app.route('/search', methods=['GET','POST'])
 def search():
+    if request.method == 'POST':
+        keyword = request.form.get('keyword')
+
+        url = f'https://trefle.io/api/v1/plants/search?token={API_KEY}&q={keyword}'
+        response = requests.get(url).text
+        response = json.loads(response)['data']
+
+        return render_template('search.html', keyword=keyword, data=response)
     return render_template('search.html')
 
 if __name__ == '__main__':
